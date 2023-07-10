@@ -1,8 +1,8 @@
 import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'main.dart';
 
 class TouchpadScreen extends StatefulWidget {
   final String ipAddress;
@@ -20,6 +20,16 @@ class _TouchpadScreenState extends State<TouchpadScreen> {
 
   Offset? tapPosition;
   bool isDoubleTap = false;
+
+  void disconnect() {
+    socket.disconnect();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => MouseControllerApp(),
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -72,6 +82,12 @@ class _TouchpadScreenState extends State<TouchpadScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('SyncPad')),
+        actions: [
+          IconButton(
+            onPressed: disconnect,
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
       body: Column(
         children: [
