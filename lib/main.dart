@@ -34,6 +34,7 @@ class _MouseControllerAppState extends State<MouseControllerApp> {
       title: 'SYNCPAD',
       theme: ThemeData(primarySwatch: Colors.teal),
       home: screen,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
