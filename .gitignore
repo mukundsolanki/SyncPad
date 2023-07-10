@@ -43,7 +43,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-/windows
-/linux
-/macos
-/web
+windows
+linux
+macos
+web
