@@ -1,4 +1,3 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
@@ -39,7 +38,7 @@ class _TouchpadScreenState extends State<TouchpadScreen> {
 
   void connectToServer() {
     socket = IO.io(
-      'http://${widget.ipAddress}:3000',
+      'http://${widget.ipAddress}:6969',
       IO.OptionBuilder()
           .setTransports(['websocket'])
           .enableAutoConnect()
@@ -81,11 +80,13 @@ class _TouchpadScreenState extends State<TouchpadScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('SyncPad')),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+        title: const Text('SyncPad'),
         actions: [
           IconButton(
             onPressed: disconnect,
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),
@@ -105,11 +106,75 @@ class _TouchpadScreenState extends State<TouchpadScreen> {
                   int dy = details.delta.dy.round();
                   sendMouseEvent('move', dx, dy);
                 },
-                child: Transform.rotate(
-                  angle: -90 * math.pi / 180,
-                  child: Container(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                  ),
+                child: const Stack(
+                  children: [
+                    Positioned(
+                      top: 10,
+                      left: 10,
+                      child: Opacity(
+                        opacity: 0.26,
+                        child: Icon(
+                          Icons.rounded_corner,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 10,
+                      right: 10,
+                      child: Opacity(
+                        opacity: 0.26,
+                        child: Icon(
+                          Icons.rounded_corner,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 10,
+                      left: 10,
+                      child: Opacity(
+                        opacity: 0.26,
+                        child: Icon(
+                          Icons.rounded_corner,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 10,
+                      right: 10,
+                      child: Opacity(
+                        opacity: 0.26,
+                        child: Icon(
+                          Icons.rounded_corner,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Opacity(
+                            opacity: 0.26,
+                            child: Icon(
+                              Icons.touch_app,
+                              size: 50,
+                            ),
+                          ),
+                          Text(
+                            'TOUCHPAD!',
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black26,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -121,13 +186,21 @@ class _TouchpadScreenState extends State<TouchpadScreen> {
                 onPressed: () {
                   sendMouseAction('left_click');
                 },
-                child: Text('Left Click'),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                child: const Text('Left Click'),
               ),
               ElevatedButton(
                 onPressed: () {
                   sendMouseAction('right_click');
                 },
-                child: Text('Right Click'),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                child: const Text('Right Click'),
               ),
             ],
           ),
