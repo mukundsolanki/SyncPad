@@ -15,7 +15,7 @@ You can find the Latest stable release [HERE](https://github.com/mukundsolanki/S
 
 ### ⚠️NOTE: Make sure to run Server side code on your PC first [FIND HERE](https://github.com/mukundsolanki/syncpad-server)
 
-
+![20230711_155126](https://github.com/mukundsolanki/SyncPad/assets/114515612/3e835f74-91cd-40af-8e00-f13c128e9776)
 
 ## Getting started with the project:
 
