@@ -81,8 +81,15 @@ class _TouchpadScreenState extends State<TouchpadScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.blue,
-        title: const Text('SyncPad'),
+        backgroundColor: Colors.black,
+        title: const Text(
+            'SyncPad',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 65, 227, 168),
+            ),
+          ),
         actions: [
           IconButton(
             onPressed: disconnect,
@@ -106,103 +113,117 @@ class _TouchpadScreenState extends State<TouchpadScreen> {
                   int dy = details.delta.dy.round();
                   sendMouseEvent('move', dx, dy);
                 },
-                child: const Stack(
-                  children: [
-                    Positioned(
-                      top: 10,
-                      left: 10,
-                      child: Opacity(
-                        opacity: 0.26,
-                        child: Icon(
-                          Icons.rounded_corner,
-                          size: 24,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 10,
-                      right: 10,
-                      child: Opacity(
-                        opacity: 0.26,
-                        child: Icon(
-                          Icons.rounded_corner,
-                          size: 24,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 10,
-                      left: 10,
-                      child: Opacity(
-                        opacity: 0.26,
-                        child: Icon(
-                          Icons.rounded_corner,
-                          size: 24,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 10,
-                      right: 10,
-                      child: Opacity(
-                        opacity: 0.26,
-                        child: Icon(
-                          Icons.rounded_corner,
-                          size: 24,
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Opacity(
-                            opacity: 0.26,
-                            child: Icon(
-                              Icons.touch_app,
-                              size: 50,
-                            ),
+                child: Container(
+                  color: const Color.fromARGB(255, 31, 31, 31),
+                  child: const Stack(
+                    children: [
+                      Positioned(
+                        top: 10,
+                        left: 10,
+                        child: Opacity(
+                          opacity: 0.50,
+                          child: Icon(
+                            color: Color.fromARGB(255, 65, 227, 168),
+                            Icons.rounded_corner,
+                            size: 24,
                           ),
-                          Text(
-                            'TOUCHPAD!',
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black26,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        top: 10,
+                        right: 10,
+                        child: Opacity(
+                          opacity: 0.50,
+                          child: Icon(
+                            color: Color.fromARGB(255, 65, 227, 168),
+                            Icons.rounded_corner,
+                            size: 24,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 10,
+                        left: 10,
+                        child: Opacity(
+                          opacity: 0.50,
+                          child: Icon(
+                            color: Color.fromARGB(255, 65, 227, 168),
+                            Icons.rounded_corner,
+                            size: 24,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 10,
+                        right: 10,
+                        child: Opacity(
+                          opacity: 0.50,
+                          child: Icon(
+                            color: Color.fromARGB(255, 65, 227, 168),
+                            Icons.rounded_corner,
+                            size: 24,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Opacity(
+                              opacity: 0.50,
+                              child: Icon(
+                                color: Color.fromARGB(255, 65, 227, 168),
+                                Icons.touch_app,
+                                size: 50,
+                              ),
+                            ),
+                            Opacity(
+                              opacity: 0.50,
+                              child: Text(
+                                'TOUCHPAD!',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 65, 227, 168),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  sendMouseAction('left_click');
-                },
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
+          Container(
+            color: Colors.black,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    sendMouseAction('left_click');
+                  },
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(const Color.fromARGB(255, 59, 179, 135),),
+                  ),
+                  child: const Text('Left Click'),
                 ),
-                child: const Text('Left Click'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  sendMouseAction('right_click');
-                },
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
+                ElevatedButton(
+                  onPressed: () {
+                    sendMouseAction('right_click');
+                  },
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(const Color.fromARGB(255, 59, 179, 135),),
+                  ),
+                  child: const Text('Right Click'),
                 ),
-                child: const Text('Right Click'),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
